@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+    <style>
+        .foo {
+            border: 1px solid blue;
+            width: 200px;
+            height: 200px;
+            /* 变量 */
+            --color: red;
+            /* 自定义属性 */
+            --my-custom-width: 200px;
+            background-image: paint(circle);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="foo"></div>
+    <script>
+        CSS.paintWorklet.addModule('paint.js');
+        if ('registerProperty' in CSS) {
+            CSS.registerProperty({
+                name: '--my-custom-width',
+                syntax: '<length>',
+                inherits: false,
+                initialValue: '200px'
+            });
+        }
+    </script>
+</body>
+</html>
+

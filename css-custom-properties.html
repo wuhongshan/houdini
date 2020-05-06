@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>css houdini</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        :root {
+            --color: red;
+            --borderpx: 2px;
+            --gap: 20;
+        }
+        .g {
+            --color: gray;
+        }
+        .bg{
+            background-color: var(--color);
+        }
+        .bg{
+            width: 100px;
+            height: 100px;
+            padding: var(--pad, 10px 20px);
+            /* margin: var(--gap)px; */
+            margin: calc(var(--gap) * 1px);
+            border: var(--borderpx) solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg"></div>
+    <div class="g">
+        <div class="bg"></div>
+    </div>
+</body>
+</html>

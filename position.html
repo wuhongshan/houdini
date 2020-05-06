@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>css houdini</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        :root{
+            --x: 0px;
+            --y: 0px;
+        }
+        body{
+            margin: 0
+        }
+        #shadow{
+            width: 50%;
+            height: 600px;
+            border: #000 1px solid;
+            position: relative;
+            margin: 0;
+        }
+
+        .x, .y, .x_, .y_ {
+            position: absolute;
+            border: #f00 2px solid;
+        }
+
+        .x {
+            top: 0;
+            left: var(--x);
+            height: 20px;
+            width: 0;
+        }
+        .y {
+            top: var(--y);
+            left: 0;
+            height: 0;
+            width: 20px;
+        }
+        .x_ {
+            top: 600px;
+            left: var(--x);
+            height: 20px;
+            width: 0;
+        }
+        .y_ {
+            top: var(--y);
+            left: 100%;
+            height: 0;
+            width: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="shadow">
+        <div class="x"></div>
+        <div class="y"></div>
+        <div class="x_"></div>
+        <div class="y_"></div>
+    </div>
+    <script>
+        const style = document.documentElement.style;
+        shadow.addEventListener('mousemove', e => {
+            style.setProperty(`--x`, e.clientX + 'px')
+            style.setProperty(`--y`, e.clientY + 'px')
+        });
+    </script>
+</body>
+</html>
